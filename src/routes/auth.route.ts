@@ -2,14 +2,11 @@ import {
   loginFun,
   logoutFun,
   registrationFun,
-} from "@/controller/authentication";
+} from "@/controller/authController";
+import authMiddleware from "@/middleware/auth";
 import express, { Request, Response } from "express";
 
 const auth = express.Router();
-
-auth.get("/temp", async (req: Request, res: Response) => {
-  res.status(200).send("everything is good");
-});
 
 auth.post("/register", async (req: Request, res: Response) => {
   const result = await registrationFun(req, res);
